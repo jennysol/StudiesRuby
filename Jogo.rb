@@ -57,10 +57,7 @@ def verifica_se_acertou(numero_secreto, chute)
     false
 end   
 
-da_boas_vindas
-dificuldade = pede_dificuldade
-
-def joga(nome, dificuldade)
+def joga(dificuldade)
     numero_secreto = sorteia_numero_secreto dificuldade
 
     pontos_ate_agora = 1000
@@ -86,12 +83,15 @@ end
 def quer_jogar
     puts "Quer jogar novamente? [S/N]"
     quero_jogar = gets.strip
-    quero_jogar == "S"
+    quero_jogar.upcase == "S"
 end
 
 da_boas_vindas
 dificuldade = pede_dificuldade
 
-while quer_jogar
-    joga nome, dificuldade
+loop do
+    joga dificuldade
+    if !quer_jogar
+        break
+    end
 end
