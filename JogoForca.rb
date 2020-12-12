@@ -40,6 +40,21 @@ def joga(nome)
     while erros < 5
         chute = pede_um_chute chutes, erros
         chutes << chute
+
+        chutou_uma_letra = chute.size == 1
+        if chutou_uma_letra
+        else
+            acertou = chute == palavra_secreta
+            if acertou
+                puts "Parabéns! Acertou!"
+                pontos_ate_agora += 100
+                break
+            else
+                puts "Que pena... errou"
+                pontos_ate_agora -= 30
+                erros += 1
+            end
+        end
     end
 
     puts "Você ganhou!"
