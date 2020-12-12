@@ -9,16 +9,12 @@ def da_boas_vindas
     puts "        \\__|_|__/                              "
     puts
 
-    puts "Qual é o seu nome?"
-    nome = gets.strip
-    puts "\n\n\n\n\n\n"
-    puts "Começaremos o jogo para você, #{nome}"
-    nome
-    puts "Bem vindp ao jogo da adivinhação"
+    puts "Bem vindo ao jogo da adivinhação"
     puts "Qual é o seu nome?"
     nome = gets.strip
     puts "\n\n\n\n\n"
     puts "Começaremos o jogo para você, #{nome}"
+    nome
 end
 
 def pede_dificuldade
