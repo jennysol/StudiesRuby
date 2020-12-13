@@ -40,13 +40,17 @@ def joga(nome)
 
     while erros < 5
         chute = pede_um_chute chutes, erros
+        if chutes.include? chute
+            puts "Vocẽ já chutou #{chute}"
+            next # Vai para a próxima interação e executa tudo novamente
+        end
         chutes << chute
 
         chutou_uma_letra = chute.size == 1
         if chutou_uma_letra
             letra_procurada = chute[0]
-            total_encontrado = palavra_secreta.count letra_procurada
-            
+            total_encontrado = palavra_secreta.count letra_procurada # count > Contador
+
             if total_encontrado == 0
                 puts "Letra não encontrada."
                 erros += 1
