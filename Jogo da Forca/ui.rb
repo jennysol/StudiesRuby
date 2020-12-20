@@ -7,10 +7,12 @@ def da_boas_vindas
     nome
 end
 
-def escolhe_palavra_secreta
+def avisa_escolhendo_palavra
     puts "Escolhendo uma palavra secreta..."
-    palavra_secreta = "programador"
-    puts "Palavra secreta com #{palavra_secreta.size} letras... boa sorte!"
+end
+
+def avisa_palavra_escolhida(palavra_secreta)
+    puts "Palavra secreta com #{palavra_secreta,size} letras... boa sorte!"
     palavra_secreta
 end
 
@@ -29,31 +31,31 @@ end
 
 def pede_um_chute
     puts "Entre com uma letra ou uma palavra"
-    chute = gets.strip
+    chute = gets.strip.downcase
     puts "Será que acertou? Você chutou #{chute}"
     chute
 end
 
-def avisa_chute_efetuado(chute)
-    puts "Você já chutou #{chute}"
-end
+# def avisa_chute_efetuado(chute)
+#     puts "Você já chutou #{chute}"
+# end
 
-def avisa_letra_nao_encontrada
-    puts "Letra não encontrada"
-end
+# def avisa_letra_nao_encontrada
+#     puts "Letra não encontrada"
+# end
 
-def avisa_letra_encontrada (total_encontrado)
-    puts "Letra encontrada #{total_encontrado} vezes."
-end
+# def avisa_letra_encontrada (total_encontrado)
+#     puts "Letra encontrada #{total_encontrado} vezes."
+# end
 
-def avisa_acertou_palavra
-    puts "Parabéns! Acertou!"
-end 
+# def avisa_acertou_palavra
+#     puts "Parabéns! Acertou!"
+# end 
 
-def avisa_errou_palavra
-    puts "Que pena... errou"
-end
+# def avisa_errou_palavra
+#     puts "Que pena... errou"
+# end
 
-def avisa_pontos(pontos_ate_agora)
-    puts "Você ganhou #{pontos_ate_agora} pontos."
-end
+# def avisa_pontos(pontos_ate_agora)
+#     puts "Você ganhou #{pontos_ate_agora} pontos."
+# end
