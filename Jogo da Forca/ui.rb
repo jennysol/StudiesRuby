@@ -11,8 +11,12 @@ def avisa_escolhendo_palavra
     puts "Escolhendo uma palavra secreta..."
 end
 
+def avisa_pontos_totais(pontos_totais)
+    puts"Você possui #{pontos_totais} pontos."
+end
+
 def avisa_palavra_escolhida(palavra_secreta)
-    puts "Palavra secreta com #{palavra_secreta,size} letras... boa sorte!"
+    puts "Palavra secreta com #{palavra_secreta.size} letras... boa sorte!"
     palavra_secreta
 end
 

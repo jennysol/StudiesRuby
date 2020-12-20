@@ -11,7 +11,7 @@ end
 
 def escolhe_palavra_secreta_sem_consumir_muita_memoria
     avisa_escolhendo_palavra
-    arquivo = File.new("dicionario,txt")
+    arquivo = File.new("dicionario.txt")
     quantidade_de_palavras = arquivo.gets.to_i
     numero_escolhido = rand(quantidade_de_palavras)
     for linha in 1..(numero_escolhido-1)
@@ -44,6 +44,11 @@ def pede_um_chute_valido(chutes, erros, mascara)
             return chute
         end
     end
+end
+
+def salvar_rank (nome, pontos_totais)
+    conteudo = "#{nome}\n#{pontos_totais}"
+    File.write "rank.txt", conteudo
 end
 
 def joga(nome)
@@ -83,13 +88,17 @@ def joga(nome)
         end
     end
     avisa_pontos pontos_ate_agora
+    pontos_ate_agora
 end
 
 def jogo_da_forca
     nome = da_boas_vindas
+    pontos_totais = 0
 
     loop do
-        joga nome
+        pontod_totais += joga nome
+        avisa_pontos_totais
+        salvar_rank nome, pontos_totais
         if nao_quer_jogar?
             break
         end
