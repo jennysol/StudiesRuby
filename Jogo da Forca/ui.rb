@@ -15,6 +15,10 @@ def avisa_pontos_totais(pontos_totais)
     puts"Você possui #{pontos_totais} pontos."
 end
 
+def avisa_campeao_atual(dados)
+    puts "Nosso campeão atual é #{dados[1]} pontos."
+end
+
 def avisa_palavra_escolhida(palavra_secreta)
     puts "Palavra secreta com #{palavra_secreta.size} letras... boa sorte!"
     palavra_secreta
@@ -48,9 +52,9 @@ end
 #     puts "Letra não encontrada"
 # end
 
-# def avisa_letra_encontrada (total_encontrado)
-#     puts "Letra encontrada #{total_encontrado} vezes."
-# end
+def avisa_letra_encontrada (total_encontrado)
+    puts "Letra encontrada #{total_encontrado} vezes."
+end
 
 # def avisa_acertou_palavra
 #     puts "Parabéns! Acertou!"

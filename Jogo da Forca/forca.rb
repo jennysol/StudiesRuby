@@ -46,11 +46,6 @@ def pede_um_chute_valido(chutes, erros, mascara)
     end
 end
 
-def salvar_rank (nome, pontos_totais)
-    conteudo = "#{nome}\n#{pontos_totais}"
-    File.write "rank.txt", conteudo
-end
-
 def joga(nome)
     palavra_secreta = escolhe_palavra_secreta_sem_consumir_muita_memoria
     
@@ -95,10 +90,14 @@ def jogo_da_forca
     nome = da_boas_vindas
     pontos_totais = 0
 
+    avisa_campeao_atual le_rank
+
     loop do
-        pontod_totais += joga nome
-        avisa_pontos_totais
-        salvar_rank nome, pontos_totais
+        pontos_totais += joga nome
+        avisa_pontos_totais pontos_totais
+        if le_rank[1].to_i < pontos_totais
+            salvar_rank nome, pontos_totais
+        end
         if nao_quer_jogar?
             break
         end
