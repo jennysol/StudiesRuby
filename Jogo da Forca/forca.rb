@@ -1,4 +1,5 @@
 require_relative 'ui'
+require_relative 'rank'
 
 def escolhe_palavra_secreta
     avisa_escolhendo_palavra
@@ -36,6 +37,7 @@ end
 
 def pede_um_chute_valido(chutes, erros, mascara)
     cabecalho_de_tentativas chutes, erros, mascara
+
     loop do
         chute = pede_um_chute 
         if chutes.include? chute
@@ -47,7 +49,7 @@ def pede_um_chute_valido(chutes, erros, mascara)
 end
 
 def joga(nome)
-    palavra_secreta = escolhe_palavra_secreta_sem_consumir_muita_memoria
+    palavra_secreta = escolhe_palavra_secreta
     
     erros =  0
     chutes = []
