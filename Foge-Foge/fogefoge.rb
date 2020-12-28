@@ -17,48 +17,51 @@ def encontra_jogador(mapa)
 end
 
 def calcula_nova_posicao(heroi, direcao)
-  case direcao 
-    when "W"
-      heroi[0] -= 1
-    when "S"
-      heroi[0] += 1
-    when "A"
-      heroi[1] -= 1
-    when "D" 
-      heroi[1] += 1
-  end 
+  heroi = heroi.dup
+  movimentos= {
+    "W" => [-1, 0],
+    "S" => [+1, 0],
+    "A" => [0, -1],
+    "D" => [0, +1],
+  }
+  movimento = movimentos[direcao]
+  heroi[0] += movimento[0]
+  heroi[1] += movimento[1]
   heroi
 end
 
 def posicao_valida?(mapa, posicao)
-  linhas =  mapa.size
+  linhas = mapa.size
   colunas = mapa[0].size
-  estorou_linhas = posicao[0] < 0 || posicao[0] >= linhas
-  estorou_colunas = posicao[1] < 0 || posicao[1] >= colunas
 
-  if estorou_linhas || estorou_colunas
-    return false
-  end 
+  estourou_linhas = posicao[0] < 0 || posicao[0] >= linhas
+  estourou_colunas = posicao[1] < 0 || posicao[1] >= colunas
+
+  if estourou_linhas || estourou_colunas
+      return false
+  end
 
   if mapa[posicao[0]][posicao[1]] == "X"
-    return false
-  end  
+      return false
+  end
+
   true
 end
 
 def joga(nome)
-  mapa = le_mapa 1
-
+  mapa = le_mapa(1)
   while true
-    desenha mapa
-    direcao = pede_movimento
-    heroi = encontra_jogador mapa
-    nova_posicao = calcula_nova_posicao heroi, direcao
-    if !posicao_valida? mapa, nova_posicao
-      next
-    end
-    mapa[heroi[0]][heroi[1]] = " " #Vou pegar meu heroi na linha/coluna e colocar um espaço em branco
-    mapa[nova_posicao[0]][nova_posicao[1]] = "H"   
+      desenha mapa
+      direcao = pede_movimento
+
+      heroi = encontra_jogador mapa
+      nova_posicao = calcula_nova_posicao heroi, direcao
+      if !posicao_valida? mapa, nova_posicao
+          next
+      end
+
+      mapa[heroi[0]][heroi[1]] = " "
+      mapa[nova_posicao[0]][nova_posicao[1]] = "H"
   end
 end
 

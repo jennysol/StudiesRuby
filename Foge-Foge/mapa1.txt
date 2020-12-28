@@ -1,9 +1,11 @@
+
 XXXXX
 X H X
+X   X
 X X X
 X   X
-  X
+  X  
  XXX
-  X
+  X  
 X F X
 XXXXX
