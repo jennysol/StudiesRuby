@@ -75,6 +75,8 @@ def posicoes_validas_a_partir_de(mapa, posicao)
 end
 
 def move_fantasma(mapa, linha, coluna)
+  puts "Movendo o fantasma da posicao #{linha} #{coluna}"
+  desenha mapa
   posicoes = posicoes_validas_a_partir_de mapa, [linha, coluna]
   return if posicoes.empty?
   # if posicoes.empty? #se posicoes é vazio
@@ -89,7 +91,7 @@ end
 def move_fantasmas(mapa)
   caractere_do_fantasma = "F"
   mapa.each_with_index do |linha_atual, linha|
-    linha_atual.chars.each_with_index do |caractere_atual, coluna| #chars devolve um array de caracteres
+    linha_atual.chars.each_with_index do |caractere_atual, coluna| #chars(Cópia da linha) devolve um array de caracteres
       eh_fantasma = caractere_atual == caractere_do_fantasma
       if eh_fantasma
         move_fantasma mapa, linha, coluna
