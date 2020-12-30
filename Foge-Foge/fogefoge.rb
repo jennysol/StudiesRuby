@@ -89,19 +89,7 @@ def move_fantasma(mapa, linha, coluna)
 end
 
 def copia_mapa(mapa)
-  novo_mapa = []
-  mapa.each do |linha| #para cada uma das linhas do mapa
-    nova_linha = " "
-    linha.each do |caractere|
-      if caractere == "F"
-        nova_linha << " "
-      else 
-        nova_linha << caractere
-      end
-    end
-    novo_mapa << nova_linha
-  end
-  novo_mapa
+  novo_mapa = mapa.join("\n").tr("F", " ").split "\n" #Junta tudo numa string e traduz
 end
 
 def move_fantasmas(mapa)
