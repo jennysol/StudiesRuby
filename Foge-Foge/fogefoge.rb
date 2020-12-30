@@ -47,11 +47,15 @@ def posicao_valida?(mapa, posicao)
   true
 end
 
+def soma_vetor(vetor1, vetor2)
+  [vetor1[0] + vetor2[0], vetor1[1] + vetor2[1]]
+end
+
 def posicoes_validas_a_partir_de(mapa, novo_mapa, posicao)
   posicoes = []
   movimentos = [[+1, 0], [0, +1], [-1, 0], [0, -1]]
   movimentos.each do |movimento|
-    nova_posicao = [posicao[0] + movimento[0], posicao[1] + movimento[1]]
+    nova_posicao = soma_vetor(movimento, posicao)
     if posicao_valida?(mapa, nova_posicao) && posicao_valida?(novo_mapa, nova_posicao)
       posicoes << nova_posicao
     end
