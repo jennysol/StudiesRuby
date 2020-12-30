@@ -44,64 +44,59 @@ def posicao_valida?(mapa, posicao)
   if valor_atual == "X" || valor_atual == "F"
       return false
   end
-
   true
 end
 
-def posicoes_validas_a_partir_de(mapa, posicao)
+def posicoes_validas_a_partir_de(mapa, novo_mapa, posicao)
   posicoes = []
 
   baixo = [posicao[0] + 1, posicao[1]]
-  if posicao_valida? mapa, baixo
+  if posicao_valida?(mapa, baixo) && posicao_valida?(novo_mapa, baixo)
     posicoes << baixo
   end
 
   cima = [posicao[0] - 1, posicao[1]]
-  if posicao_valida? mapa, cima
+  if posicao_valida?(mapa, cima) && posicao_valida?(novo_mapa, cima)
     posicoes << cima
   end
 
   direita = [posicao[0], posicao[1] + 1]
-  if posicao_valida? mapa, direita
+  if posicao_valida?(mapa, direita) && posicao_valida?(novo_mapa, direita)
     posicoes << direita
   end
 
   esquerda = [posicao[0], posicao[1] - 1]
-  if posicao_valida? mapa, esquerda
+  if posicao_valida?(mapa, esquerda) && posicao_valida?(novo_mapa, esquerda)
     posicoes << esquerda
   end
-
   posicoes
 end
 
-def move_fantasma(mapa, linha, coluna)
-  puts "Movendo o fantasma da posicao #{linha} #{coluna}"
-  desenha mapa
-  posicoes = posicoes_validas_a_partir_de mapa, [linha, coluna]
+def move_fantasma(mapa, novo_mapa, linha, coluna)
+  posicoes = posicoes_validas_a_partir_de mapa, novo_mapa, [linha, coluna]
   return if posicoes.empty?
-  # if posicoes.empty? #se posicoes é vazio
-  #   return
-  # end
 
   posicao = posicoes[0]
   mapa[linha][coluna] = " "
-  mapa[posicao[0]][posicao[1]] = "F"
+  novo_mapa[posicao[0]][posicao[1]] = "F"
 end
 
 def copia_mapa(mapa)
-  novo_mapa = mapa.join("\n").tr("F", " ").split "\n" #Junta tudo numa string e traduz
+  novo_mapa = mapa.join("\n").tr("F", " ").split "\n" #Junta tudo numa string, traduz e separa para trabalhar com arrays de string
 end
 
 def move_fantasmas(mapa)
   caractere_do_fantasma = "F"
+  novo_mapa = copia_mapa mapa
   mapa.each_with_index do |linha_atual, linha|
     linha_atual.chars.each_with_index do |caractere_atual, coluna| #chars(Cópia da linha) devolve um array de caracteres
       eh_fantasma = caractere_atual == caractere_do_fantasma
       if eh_fantasma
-        move_fantasma mapa, linha, coluna
+        move_fantasma mapa, novo_mapa, linha, coluna
       end
     end
   end
+  novo_mapa
 end
 
 def joga(nome)
@@ -120,7 +115,7 @@ def joga(nome)
       mapa[heroi[0]][heroi[1]] = " "
       mapa[nova_posicao[0]][nova_posicao[1]] = "H"
 
-      move_fantasmas mapa
+      mapa = move_fantasmas mapa
   end
 end
 
