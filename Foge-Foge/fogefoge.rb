@@ -18,7 +18,7 @@ end
 
 def calcula_nova_posicao(heroi, direcao)
   heroi = heroi.dup
-  movimentos= {
+  movimentos = {
     "W" => [-1, 0],
     "S" => [+1, 0],
     "A" => [0, -1],
@@ -49,25 +49,12 @@ end
 
 def posicoes_validas_a_partir_de(mapa, novo_mapa, posicao)
   posicoes = []
-
-  baixo = [posicao[0] + 1, posicao[1]]
-  if posicao_valida?(mapa, baixo) && posicao_valida?(novo_mapa, baixo)
-    posicoes << baixo
-  end
-
-  cima = [posicao[0] - 1, posicao[1]]
-  if posicao_valida?(mapa, cima) && posicao_valida?(novo_mapa, cima)
-    posicoes << cima
-  end
-
-  direita = [posicao[0], posicao[1] + 1]
-  if posicao_valida?(mapa, direita) && posicao_valida?(novo_mapa, direita)
-    posicoes << direita
-  end
-
-  esquerda = [posicao[0], posicao[1] - 1]
-  if posicao_valida?(mapa, esquerda) && posicao_valida?(novo_mapa, esquerda)
-    posicoes << esquerda
+  movimentos = [[+1, 0], [0, +1], [-1, 0], [0, -1]]
+  movimentos.each do |movimento|
+    nova_posicao = [posicao[0] + movimento[0], posicao[1] + movimento[1]]
+    if posicao_valida?(mapa, nova_posicao) && posicao_valida?(novo_mapa, nova_posicao)
+      posicoes << nova_posicao
+    end
   end
   posicoes
 end
@@ -105,13 +92,11 @@ def joga(nome)
   while true
       desenha mapa
       direcao = pede_movimento
-
       heroi = encontra_jogador mapa
       nova_posicao = calcula_nova_posicao heroi, direcao
       if !posicao_valida? mapa, nova_posicao
           next
       end
-
       mapa[heroi[0]][heroi[1]] = " "
       mapa[nova_posicao[0]][nova_posicao[1]] = "H"
 
