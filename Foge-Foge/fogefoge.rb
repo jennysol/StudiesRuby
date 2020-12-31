@@ -88,9 +88,13 @@ def jogardor_perdeu?(mapa)
 end
 
 def remove(mapa, posicao, quantidade)
-  for direita in 1..quantidade
-    posicao = posicao.calcula_nova_posicao "D"
-    remove_do mapa
+  if quantidade == 0
+    return
+  end
+  # return unless quantidade > 0
+  posicao = posicao.direita
+  posicao.remove_do mapa
+  remove mapa, posicao, quantidade - 1
 end
 
 def joga(nome)
