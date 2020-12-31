@@ -98,9 +98,9 @@ def joga(nome)
       if !posicao_valida? mapa, nova_posicao.to_array
           next
       end
-      mapa[heroi.coluna][heroi.linha] = " "
-      mapa[nova_posica.linha[nova_posicao.coluna = "H"
-
+      heroi.remove_do mapa
+      nova_posicao.coloca_no mapa
+     
       mapa = move_fantasmas mapa
       if jogador_perdeu mapa
         game_over
