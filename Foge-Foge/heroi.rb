@@ -13,6 +13,10 @@ class Heroi
         novo_heroi.linha += movimento[0]
         novo_heroi.coluna += movimento[1]
         novo_heroi
-      end
+    end
+
+    def to_array
+        [linha, coluna]
+    end
 end
 

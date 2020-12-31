@@ -95,11 +95,11 @@ def joga(nome)
       direcao = pede_movimento
       heroi = encontra_jogador mapa
       nova_posicao = heroi.calcula_nova_posicao direcao
-      if !posicao_valida? mapa, nova_posicao
+      if !posicao_valida? mapa, nova_posicao.to_array
           next
       end
       mapa[heroi.coluna][heroi.linha] = " "
-      mapa[nova_posicao[0]][nova_posicao[1]] = "H"
+      mapa[nova_posica.linha[nova_posicao.coluna = "H"
 
       mapa = move_fantasmas mapa
       if jogador_perdeu mapa
