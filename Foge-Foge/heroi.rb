@@ -2,7 +2,7 @@ class Heroi
     attr_accessor :linha, :coluna #Atributos e acesso
 
     def calcula_nova_posicao(direcao)
-        heroi = self.dup #Duplicando eu mesmo
+        novo_heroi = dup #Duplicando eu mesmo
         movimentos = {
           "W" => [-1, 0],
           "S" => [+1, 0],
@@ -10,9 +10,9 @@ class Heroi
           "D" => [0, +1],
         }
         movimento = movimentos[direcao]
-        heroi.linha += movimento[0]
-        heroi.coluna += movimento[1]
-        heroi
+        novo_heroi.linha += movimento[0]
+        novo_heroi.coluna += movimento[1]
+        novo_heroi
       end
 end
 
