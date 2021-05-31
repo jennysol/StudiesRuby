@@ -46,6 +46,12 @@ def exporta_csv(estoque)
   end
 end 
 
+def mais_baratos_que(estoque, valor)
+  estoque.select do |livro|
+    livro.preco <= valor
+  end
+end
+
 algoritmos = Livro.new("Algoritmos", 100, 1998, true)
 arquitetura = Livro.new("Introdução a Arquitetura e Design de Software", 70, 2011, true)
 
@@ -55,4 +61,8 @@ estoque << Livro.new("Programming Ruby", 100, 2004, true)
 
 exporta_csv(estoque)
 
+baratos = mais_baratos_que(estoque, 80)
+baratos.each do |livro|
+  puts livro.titulo
+end
 
