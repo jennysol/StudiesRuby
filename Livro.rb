@@ -40,5 +40,10 @@ def livro_para_newsletter(livro)
   end
 end
 algoritmos = Livro.new("Algoritmos", 100, 1998, true)
+arquitetura = Livro.new("Introdução a Arquitetura e Design de Software", 70, 2011, true)
 
-livro_para_newsletter(algoritmos)
+estoque = [açgoritmos , arquitetura]
+estoque << Livro.new("The Progmatic Programmer", 100, 1999, true)
+estoque << Livro.new("Programming Ruby", 100, 2004, true)
+
+
