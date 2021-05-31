@@ -41,7 +41,6 @@ def livro_para_newsletter(livro)
 end
 
 class Estoque 
-  attr_reader :livros
   def initialize
     @livros = []
   end
@@ -55,6 +54,12 @@ class Estoque
       livro.preco <= valor
     end
   end
+  def total 
+    @livros.size
+  end
+  def adiciona(livro)
+    @livros << livro if livro
+  end
 end
 
 
@@ -62,10 +67,11 @@ algoritmos = Livro.new("Algoritmos", 100, 1998, true)
 arquitetura = Livro.new("Introdução a Arquitetura e Design de Software", 70, 2011, true)
 
 estoque = Estoque.new
-estoque.livros << algoritmos << arquitetura
-
-estoque.livros << Livro.new("The Progmatic Programmer", 100, 1999, true)
-estoque.livros << Livro.new("Programming Ruby", 100, 2004, true)
+estoque.adiciona  algoritmos
+estoque.adiciona  arquitetura
+estoque.adiciona  Livro.new("The Progmatic Programmer", 100, 1999, true)
+estoque.adiciona  Livro.new("Programming Ruby", 100, 2004, true)
+estoque.adiciona nil
 
 estoque.exporta_csv
 
