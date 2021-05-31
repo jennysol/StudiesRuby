@@ -10,6 +10,10 @@ class Livro
     @preco = calcula_preco(preco)
   end
 
+  def to_csv
+    "#{@titulo}, #{@ano_lancamento}, #{@preco}"
+  end
+
   def possui_reimpressao?
     @possui_reimpressao
   end
@@ -46,7 +50,7 @@ class Estoque
   end
   def exporta_csv
     @livros.each do |livro|
-     puts "#{livro.titulo}, #{livro.ano_lancamento}"
+     puts livro.to_csv
     end
   end
   def mais_baratos_que(valor)
