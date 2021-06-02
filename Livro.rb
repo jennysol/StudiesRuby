@@ -76,8 +76,15 @@ class Estoque
   def total 
     @livros.size
   end
-  def adiciona(livro)
+  def <<(livro)
     @livros << livro if livro
+    self
+  end
+  def remove(livro)
+    @livros.delete livro
+  end
+  def maximo_necessario
+    @livros.maximo_necessario
   end
 end
 
@@ -88,14 +95,13 @@ programmer = Livro.new("The Progmatic Programmer", 100, 1999, true)
 ruby = Livro.new("Programming Ruby", 100, 2004, true)
 
 estoque = Estoque.new
-estoque.livros <<  algoritmos
+estoque <<  algoritmos
 puts estoque.livros.maximo_necessario
-estoque.livros <<  arquitetura
-puts estoque.livros.maximo_necessario
-estoque.livros <<  programmer 
-puts estoque.livros.maximo_necessario
-estoque.livros <<  ruby
-puts estoque.livros.maximo_necessario
-estoque.livros.delete algoritmos
-puts estoque.livros.maximo_necessario
-
+estoque <<  arquitetura
+puts estoque.maximo_necessario
+estoque <<  programmer 
+puts estoque.maximo_necessario
+estoque <<  ruby
+puts estoque.maximo_necessario
+estoque.remove algoritmos
+puts estoque.maximo_necessario
