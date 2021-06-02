@@ -44,10 +44,25 @@ def livro_para_newsletter(livro)
   end
 end
 
+module Contador 
+  def <<(livro)
+    push(livro)
+    if @maximo_necessario.nil? || @maximo_necessario < size
+      @maximo_necessario = size
+    end
+    self
+  end
+  attr_reader :maximo_necessario
+end
+
 class Estoque 
+  attr_reader :livros
+
   def initialize
     @livros = []
+    @livros.extend Contador
   end
+
   def exporta_csv
     @livros.each do |livro|
      puts livro.to_csv
@@ -69,18 +84,18 @@ end
 
 algoritmos = Livro.new("Algoritmos", 100, 1998, true)
 arquitetura = Livro.new("Introdução a Arquitetura e Design de Software", 70, 2011, true)
+programmer = Livro.new("The Progmatic Programmer", 100, 1999, true)
+ruby = Livro.new("Programming Ruby", 100, 2004, true)
 
 estoque = Estoque.new
-estoque.adiciona  algoritmos
-estoque.adiciona  arquitetura
-estoque.adiciona  Livro.new("The Progmatic Programmer", 100, 1999, true)
-estoque.adiciona  Livro.new("Programming Ruby", 100, 2004, true)
-estoque.adiciona nil
-
-estoque.exporta_csv
-
-baratos = estoque.mais_baratos_que 80
-baratos.each do |livro|
-  puts livro.titulo
-end
+estoque.livros <<  algoritmos
+puts estoque.livros.maximo_necessario
+estoque.livros <<  arquitetura
+puts estoque.livros.maximo_necessario
+estoque.livros <<  programmer 
+puts estoque.livros.maximo_necessario
+estoque.livros <<  ruby
+puts estoque.livros.maximo_necessario
+estoque.livros.delete algoritmos
+puts estoque.livros.maximo_necessario
 
