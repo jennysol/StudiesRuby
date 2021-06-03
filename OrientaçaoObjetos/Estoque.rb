@@ -20,6 +20,10 @@ class Estoque
     end
   end
 
+  def respond_to?(name)
+    name.to_s.match("(.+)_que_mais_vendeu_por_(.+)") || super
+  end
+
   def exporta_csv
     @livros.each do |livro|
       puts livro.to_csv
