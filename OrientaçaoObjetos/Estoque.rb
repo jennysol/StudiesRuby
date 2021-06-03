@@ -27,6 +27,13 @@ class Estoque
     }
   end
 
+  def livro_que_mais_vendeu_por_editora
+    @vendas.sort {|v1, v2 |
+      quantidade_de_vendas_por(v1, &:editora) <=>
+      quantidade_de_vendas_por(v2, &:editora)
+    }
+  end
+
   def exporta_csv
     @livros.each do |livro|
       puts livro.to_csv
