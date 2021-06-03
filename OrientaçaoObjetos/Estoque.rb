@@ -14,38 +14,31 @@ class Estoque
   end
 
   def livro_que_mais_vendeu_por_titulo
-    livro_que_mais_vendeu_por(&:titulo)
+    que_mais_vendeu_por("livro",&:titulo)
   end
 
   def livro_que_mais_vendeu_por_ano
-    livro_que_mais_vendeu_por(&:ano)
+    que_mais_vendeu_por("livro",&:ano)
   end
 
   def livro_que_mais_vendeu_por_editora
-   livro_que_mais_vendeu_por(&:editora)
-  end
-
-  def livro_que_mais_vendeu_por(&campo)
-    @vendas.select {|l| l.tipo == "livro"}.sort {|v1, v2| 
-      quantidade_de_vendas_por(v1, &campo) <=> 
-      quantidade_de_vendas_por(v2, &campo)
-    }.last
+   que_mais_vendeu_por("livro", &:editora)
   end
 
   def revista_que_mais_vendeu_por_titulo
-    revista_que_mais_vendeu_por(&:titulo)
+    que_mais_vendeu_por("revista", &:titulo)
   end
 
   def revista_que_mais_vendeu_por_ano
-    revista_que_mais_vendeu_por(&:ano)
+    que_mais_vendeu_por("revista", &:ano)
   end
 
   def revista_que_mais_vendeu_por_editora
-   revista_que_mais_vendeu_por(&:editora)
+  que_mais_vendeu_por("revista", &:editora)
   end
 
-  def revista_que_mais_vendeu_por(&campo)
-    @vendas.select {|l| l.tipo == "revista"}.sort {|v1, v2| 
+  def que_mais_vendeu_por(tipo, &campo)
+    @vendas.select {|l| l.tipo == tipo }.sort {|v1, v2| 
       quantidade_de_vendas_por(v1, &campo) <=> 
       quantidade_de_vendas_por(v2, &campo)
     }.last
