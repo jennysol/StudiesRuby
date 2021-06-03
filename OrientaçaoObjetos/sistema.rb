@@ -29,8 +29,8 @@ estoque.vende algoritmos
 estoque.vende algoritmos
 estoque.vende revistona
 
-puts estoque.livro_que_mais_vendeu_por_titulo.titulo
-puts estoque.revista_que_mais_vendeu_por_titulo.titulo
+puts estoque.livro_que_mais_vendeu_por(&:titulo).titulo
+puts estoque.revista_que_mais_vendeu_por(&:titulo).titulo
 
 
 
