@@ -1,15 +1,16 @@
 class Livro
-  attr_reader :titulo, :preco, :ano_lancamento, :editora, :tipo
+  attr_reader :titulo, :preco, :ano_lancamento, :editora
 
-  def initialize(titulo, preco, ano_lancamento, possui_reimpressao, editora, tipo)
+  def initialize(titulo, preco, ano_lancamento, possui_reimpressao, possui_sobrecapa, editora)
     # @ Variável global main 
     @titulo = titulo
     @preco = preco
     @ano_lancamento = ano_lancamento
     @possui_reimpressao = possui_reimpressao
+    @possui_sobrecapa = possui_sobrecapa
     @preco = calcula_preco(preco)
     @editora = editora
-    @tipo = tipo
+   
   end
 
   def to_csv
