@@ -13,6 +13,10 @@ class Livro
    
   end
 
+  def tipo
+    "livro"
+  end
+
   def to_csv
     "#{@titulo}, #{@ano_lancamento}, #{@preco}"
   end

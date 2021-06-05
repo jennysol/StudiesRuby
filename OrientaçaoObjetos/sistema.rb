@@ -1,4 +1,6 @@
 require_relative "Livro"
+require_relative "Revista"
+require_relative "Ebook"
 require_relative "Estoque"
 
 class Conversor
@@ -15,13 +17,13 @@ class Float
   end
 end
 
-algoritmos = Livro.new("Algoritmos", 100, 1998, true, "", "livro")
-arquitetura = Livro.new("Introdução a Arquitetura e Design de Software", 70, 2011, true, "", "livro")
-programmer = Livro.new("The Progmatic Programmer", 100, 1999, true, "", "livro")
-ruby = Livro.new("Programming Ruby", 100, 2004, true, "", "livro")
+algoritmos = Livro.new("Algoritmos", 100, 1998, true, "", true)
+arquitetura = Livro.new("Introdução a Arquitetura e Design de Software", 70, 2011, true, "", false)
+programmer = Livro.new("The Progmatic Programmer", 100, 1999, true, "", false)
+ruby = Livro.new("Programming Ruby", 100, 2004, true, "", true)
 
-revistona = Livro.new("Revista de Ruby", 10, 2012, true, "Revistas", "revista")
-online_arquitetura = Livro.new("Introdução a Arquitetura e Design de Software", 50, 2012, true, "", "ebook")
+revistona = Revista.new("Revista de Ruby", 10, 2012, true, "Revistas", 3)
+online_arquitetura = Ebook.new("Introdução a Arquitetura e Design de Software", 50, 2012,"")
 
 estoque = Estoque.new
 estoque << algoritmos << algoritmos << ruby << programmer << arquitetura << ruby << ruby << revistona << online_arquitetura

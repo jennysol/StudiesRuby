@@ -1,4 +1,4 @@
-class EBook
+class Ebook
     attr_reader :titulo, :preco, :ano_lancamento, :editora
   
     def initialize(titulo, preco, ano_lancamento, editora)
@@ -9,6 +9,10 @@ class EBook
       @preco = calcula_preco(preco)
       @editora = editora
      
+    end
+
+    def tipo
+      "ebook"
     end
   
     def to_csv
