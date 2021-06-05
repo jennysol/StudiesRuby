@@ -21,7 +21,8 @@ class Estoque
   end
 
   def respond_to?(name)
-    name.to_s.match("(.+)_que_mais_vendeu_por_(.+)") || super
+    matched = name.to_s.match("(.+)_que_mais_vendeu_por_(.+)") 
+    !!(matched) || super
   end
 
   def exporta_csv
