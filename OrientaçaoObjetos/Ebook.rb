@@ -11,8 +11,8 @@ class Ebook
      
     end
 
-    def tipo
-      "ebook"
+    def matches?(query)
+      ["ebook", "digital"].include?(query)
     end
   
     def to_csv

@@ -11,8 +11,8 @@ class Revista
       @editora = editora
     end
 
-    def tipo
-      "revista"
+    def matches?(query)
+      ["revista", "impresso"].include?(query)
     end
   
     def to_csv

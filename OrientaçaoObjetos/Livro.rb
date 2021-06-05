@@ -13,8 +13,8 @@ class Livro
    
   end
 
-  def tipo
-    "livro"
+  def matches?(query)
+    ["livro", "impresso"].include?(query)
   end
 
   def to_csv
