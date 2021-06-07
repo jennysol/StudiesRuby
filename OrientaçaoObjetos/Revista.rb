@@ -1,6 +1,6 @@
 require_relative "Produto"
 class Revista
-    attr_reader :titulo, :preco, :ano_lancamento, :editora
+    attr_reader :editora
 
     include Produto
   

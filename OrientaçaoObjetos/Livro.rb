@@ -1,6 +1,7 @@
 require_relative "Produto"
 class Livro
-  attr_reader :titulo, :preco, :ano_lancamento, :editora
+  attr_reader :editora
+  
   include Produto
 
   def initialize(titulo, preco, ano_lancamento, possui_reimpressao, possui_sobrecapa, editora)

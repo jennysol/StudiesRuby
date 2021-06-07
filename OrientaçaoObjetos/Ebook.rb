@@ -1,7 +1,5 @@
 require_relative "Produto"
 class Ebook
-    attr_reader :titulo, :preco, :ano_lancamento, :editora
-
     include Produto
   
     def initialize(titulo, preco, ano_lancamento, editora)

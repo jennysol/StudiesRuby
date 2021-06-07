@@ -1,4 +1,5 @@
 module Produto
+  attr_reader :titulo, :preco, :ano_lancamento
   def to_csv
     "#{@titulo}, #{@ano_lancamento}, #{@preco}"
   end
