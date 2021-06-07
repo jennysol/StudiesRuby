@@ -1,5 +1,7 @@
+require_relative "Produto"
 class Livro
   attr_reader :titulo, :preco, :ano_lancamento, :editora
+  include Produto
 
   def initialize(titulo, preco, ano_lancamento, possui_reimpressao, possui_sobrecapa, editora)
     # @ Variável global main 
@@ -15,10 +17,6 @@ class Livro
 
   def matches?(query)
     ["livro", "impresso"].include?(query)
-  end
-
-  def to_csv
-    "#{@titulo}, #{@ano_lancamento}, #{@preco}"
   end
 
   def possui_reimpressao?
