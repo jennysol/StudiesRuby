@@ -1,9 +1,11 @@
 require_relative "Produto"
-class Revista
+require_relative "Impresso"
+
+class Revista < Produto
     attr_reader :editora
 
-    include Produto
-  
+    include Impresso
+
     def initialize(titulo, preco, ano_lancamento, possui_reimpressao, editora, numero)
       super(titulo, preco, ano_lancamento, editora)
       @possui_reimpressao = possui_reimpressao
