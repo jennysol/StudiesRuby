@@ -1,5 +1,15 @@
 module Produto
   attr_reader :titulo, :preco, :ano_lancamento
+
+  def initialize(titulo, preco, ano_lancamento, editora)
+    # @ Variável global main 
+    @titulo = titulo
+    @preco = preco
+    @ano_lancamento = ano_lancamento
+    @preco = calcula_preco(preco)
+    @editora = editora
+  end
+  
   def to_csv
     "#{@titulo}, #{@ano_lancamento}, #{@preco}"
   end
