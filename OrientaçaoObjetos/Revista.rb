@@ -5,13 +5,9 @@ class Revista
     include Produto
   
     def initialize(titulo, preco, ano_lancamento, possui_reimpressao, editora, numero)
-      # @ Variável global main 
-      @titulo = titulo
-      @ano_lancamento = ano_lancamento
+      super(titulo, preco, ano_lancamento, editora)
       @possui_reimpressao = possui_reimpressao
       @numero = numero
-      @preco = calcula_preco(preco)
-      @editora = editora
     end
 
     def matches?(query)
