@@ -16,6 +16,4 @@ class Livro < Produto
   def matches?(query)
     ["livro", "impresso"].include?(query)
   end
-
-  private
 end
